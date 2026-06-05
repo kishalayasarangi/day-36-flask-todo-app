@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flask Todo App</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="app-title">📋 Todo App</h1>
+    <p class="subtitle">Full Stack · Flask + SQLite · Day 36 of 120</p>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-box"><span id="totalCount">0</span><label>Total</label></div>
+      <div class="stat-box active"><span id="activeCount">0</span><label>Active</label></div>
+      <div class="stat-box done"><span id="doneCount">0</span><label>Done</label></div>
+      <div class="stat-box high"><span id="highCount">0</span><label>High Priority</label></div>
+    </div>
+
+    <!-- ADD FORM -->
+    <div class="add-card">
+      <h3>Add New Todo</h3>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Title *</label>
+          <input type="text" id="titleInput" placeholder="What needs to be done?"/>
+        </div>
+        <div class="form-group full">
+          <label>Description</label>
+          <input type="text" id="descInput" placeholder="Optional details..."/>
+        </div>
+        <div class="form-group">
+          <label>Priority</label>
+          <select id="priorityInput">
+            <option value="high">🔴 High</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="low">🟢 Low</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" id="dueDateInput"/>
+        </div>
+      </div>
+      <button class="btn-add" onclick="addTodo()">+ Add Todo</button>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setFilter('status','all',this)">All</button>
+        <button class="filter-btn" onclick="setFilter('status','active',this)">Active</button>
+        <button class="filter-btn" onclick="setFilter('status','completed',this)">Completed</button>
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setFilter('priority','all',this)">All Priority</button>
+        <button class="filter-btn" onclick="setFilter('priority','high',this)">🔴 High</button>
+        <button class="filter-btn" onclick="setFilter('priority','medium',this)">🟡 Medium</button>
+        <button class="filter-btn" onclick="setFilter('priority','low',this)">🟢 Low</button>
+      </div>
+    </div>
+
+    <!-- TODOS LIST -->
+    <div class="todos-list" id="todosList"></div>
+
+  </div>
+
+  <footer>Day 36 of 120 · Kishalaya Sarangi · NIT Rourkela</footer>
+  <script src="/static/script.js"></script>
+</body>
+</html>
